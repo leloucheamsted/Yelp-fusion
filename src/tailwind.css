@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Geist-inspired styles */
+@layer base {
+  * {
+    @apply border-geist-border;
+  }
+  
+  body {
+    @apply bg-geist-background text-geist-foreground font-geist;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Button Components */
+  .btn-primary {
+    @apply bg-geist-accent hover:bg-geist-accent-hover text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-geist-foreground border border-geist-border font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-md;
+  }
+  
+  /* Card Components */
+  .card {
+    @apply bg-white border border-geist-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-200;
+  }
+  
+  .card-header {
+    @apply p-6 border-b border-geist-border;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  /* Form Components */
+  .form-input {
+    @apply w-full px-4 py-3 border border-geist-border rounded-lg focus:ring-2 focus:ring-geist-accent focus:border-geist-accent transition-all duration-200 bg-white text-geist-foreground placeholder-geist-muted;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-geist-foreground mb-2;
+  }
+  
+  /* Badge/Tag Components */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-geist-accent/10 text-geist-accent;
+  }
+  
+  .badge-secondary {
+    @apply bg-gray-100 text-geist-muted;
+  }
+  
+  /* Toast/Alert Components */
+  .toast {
+    @apply fixed top-4 right-4 z-50 bg-white border border-geist-border rounded-lg shadow-lg p-4 animate-slide-up;
+  }
+  
+  .toast-success {
+    @apply border-l-4 border-geist-success;
+  }
+  
+  .toast-error {
+    @apply border-l-4 border-geist-error;
+  }
+  
+  .toast-warning {
+    @apply border-l-4 border-geist-warning;
+  }
+}
+
+@layer utilities {
+  /* Custom utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gradient-background {
+    background: 
+      radial-gradient(ellipse at top, rgba(0,0,0,0.02) 0%, transparent 70%),
+      linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%),
+      theme('colors.geist-background');
+  }
+  
+  .dot-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 border border-white/20;
+  }
+}

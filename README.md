@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Frontend React - Yelp Business Search 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interface utilisateur moderne pour la recherche d'entreprises locales via l'API Yelp.
 
 ## Available Scripts
 
