@@ -66,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <SearchForm onSearch={handleSearch} loading={loading} />
-      
+
       <div className="main-content">
         <div className="container">
           <BusinessList

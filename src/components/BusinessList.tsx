@@ -28,16 +28,15 @@ const BusinessList: React.FC<BusinessListProps> = ({ businesses, loading, error,
         return (
             <div className="business-list-container">
                 <div className="error-container">
-                    <div className="error-icon">⚠️</div>
                     <h3>Oups ! Une erreur s'est produite</h3>
                     <p className="error-message">{error}</p>
                     {onRetry && (
                         <button onClick={onRetry} className="retry-button">
-                            🔄 Réessayer
+                            Réessayer
                         </button>
                     )}
                     <div className="error-tips">
-                        <h4>💡 Suggestions :</h4>
+                        <h4>Suggestions :</h4>
                         <ul>
                             <li>Vérifiez votre connexion internet</li>
                             <li>Essayez avec une autre recherche</li>

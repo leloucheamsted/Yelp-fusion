@@ -1,13 +1,21 @@
 import axios from 'axios';
 import { APIResponse, SearchParams } from './types';
 
-// Configuration de l'API
-const API_BASE_URL = 'http://localhost:8001';
+// Configuration de l'API depuis les variables d'environnement
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8001';
+const API_TIMEOUT = parseInt(process.env.REACT_APP_API_TIMEOUT || '30000');
+
+// Validation de la configuration
+if (!API_BASE_URL) {
+    console.error('❌ REACT_APP_API_BASE_URL n\'est pas définie dans les variables d\'environnement');
+}
+
+console.log(`🔗 API configurée sur: ${API_BASE_URL}`);
 
 // Instance Axios configurée
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 30000,
+    timeout: API_TIMEOUT,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -35,33 +43,33 @@ apiClient.interceptors.response.use(
             const data = error.response.data;
 
             if (status === 404) {
-                throw new Error('🔍 Service non trouvé. Vérifiez l\'URL de l\'API.');
+                throw new Error('Service non trouvé. Vérifiez l\'URL de l\'API.');
             }
 
             if (status === 500) {
-                throw new Error('⚠️ Erreur serveur. Vérifiez la configuration du backend et la clé API Yelp.');
+                throw new Error('Erreur serveur. Vérifiez la configuration du backend et la clé API Yelp.');
             }
 
             if (status === 403) {
-                throw new Error('🔐 Accès interdit. Vérifiez votre clé API Yelp.');
+                throw new Error('Accès interdit. Vérifiez votre clé API Yelp.');
             }
 
             if (status === 429) {
-                throw new Error('⏳ Trop de requêtes. Attendez quelques secondes avant de réessayer.');
+                throw new Error('Trop de requêtes. Attendez quelques secondes avant de réessayer.');
             }
 
             // Utiliser le message d'erreur du serveur s'il existe
             if (data?.message) {
-                throw new Error(`⚠️ ${data.message}`);
+                throw new Error(`${data.message}`);
             }
         }
 
         // Erreur générique avec plus de contexte
         if (error.message) {
-            throw new Error(`❌ ${error.message}`);
+            throw new Error(`${error.message}`);
         }
 
-        throw new Error('❌ Une erreur inconnue s\'est produite. Veuillez réessayer.');
+        throw new Error('Une erreur inconnue s\'est produite. Veuillez réessayer.');
     }
 );
 

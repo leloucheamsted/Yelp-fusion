@@ -76,7 +76,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
         <div className="search-form-navbar">
             <div className="navbar-container">
                 <div className="navbar-brand">
-                    <h1>🔍 Yelp Search</h1>
+                    <h1>Yelp Search</h1>
                 </div>
 
                 <form onSubmit={handleSubmit} className="navbar-form">
